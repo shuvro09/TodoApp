@@ -5,6 +5,7 @@ class TodoForm extends React.Component {
         super(props)
         this.handleChange = this.handleChange.bind(this)
         this.handleClick = this.handleClick.bind(this)
+        this.delete = this.delete.bind(this);
         this.state = {
             text: '',
             todos: []
@@ -14,6 +15,10 @@ class TodoForm extends React.Component {
     // handleClick = () => {
     //     console.log("hello")
     // }
+    delete(i) {
+        const newData = this.state.todos.filter(({ k, id }) => { return id !== i })
+        this.setState({ todos: newData })
+    }
     handleChange(e) {
         this.setState({ text: e })
     }
@@ -22,7 +27,7 @@ class TodoForm extends React.Component {
 
         if (this.state.text !== "") {
             console.log(this.state.text);
-            this.state.todos.push(this.state.text)
+            this.state.todos.push({ val: this.state.text, id: this.state.todos.length + 1 })
             this.handleChange("")
         }
     }
@@ -33,7 +38,7 @@ class TodoForm extends React.Component {
                     value={this.state.text} />
                 <button onClick={this.handleClick}>Add Task</button>
                 <br></br>
-                <TodoList data={this.state.todos} ></TodoList>
+                <TodoList data={this.state.todos} delete={this.delete}></TodoList>
             </div>
         )
     }
