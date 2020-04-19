@@ -3,28 +3,19 @@ import TodoList from './TodoList';
 class TodoForm extends React.Component {
     constructor(props) {
         super(props)
-        this.handleChange = this.handleChange.bind(this)
-        this.handleClick = this.handleClick.bind(this)
-        this.delete = this.delete.bind(this);
         this.state = {
             text: '',
             todos: []
         }
     }
-
-    // handleClick = () => {
-    //     console.log("hello")
-    // }
-    delete(i) {
+    delete = (i) => {
         const newData = this.state.todos.filter(({ k, id }) => { return id !== i })
         this.setState({ todos: newData })
     }
-    handleChange(e) {
+    handleChange = (e) => {
         this.setState({ text: e })
     }
-    handleClick(e) {
-        //
-
+    handleClick = (e) => {
         if (this.state.text !== "") {
             console.log(this.state.text);
             this.state.todos.push({ val: this.state.text, id: this.state.todos.length + 1 })
