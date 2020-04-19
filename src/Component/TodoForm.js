@@ -1,5 +1,6 @@
 import React from 'react';
 import TodoList from './TodoList';
+import { v4 as uuid } from 'uuid';
 class TodoForm extends React.Component {
     constructor(props) {
         super(props)
@@ -18,7 +19,7 @@ class TodoForm extends React.Component {
     handleClick = (e) => {
         if (this.state.text !== "") {
             console.log(this.state.text);
-            this.state.todos.push({ val: this.state.text, id: this.state.todos.length + 1 })
+            this.state.todos.push({ val: this.state.text, id: uuid() })
             this.handleChange("")
         }
     }
