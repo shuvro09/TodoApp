@@ -25,13 +25,15 @@ class TodoForm extends React.Component {
     }
     render() {
         return (
-            <div>
-                <input type="text" placeholder="Enter your task" onChange={(e) => { this.handleChange(e.target.value) }}
+            <>
+                <input type="text" placeholder="Enter your task" className="inputTask" onChange={(e) => { this.handleChange(e.target.value) }}
                     value={this.state.text} />
-                <button onClick={this.handleClick}>Add Task</button>
+                <button className="addTask" onClick={this.handleClick}>Add Task</button>
                 <br></br>
+                <div className="list">
                 <TodoList data={this.state.todos} delete={this.delete}></TodoList>
-            </div>
+                </div>
+            </>
         )
     }
 }

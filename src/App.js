@@ -3,8 +3,9 @@ import './App.css';
 import TodoForm from './Component/TodoForm';
 function App() {
   return (
-    <div >
-      <TodoForm />
+    <div className="todo">
+      <h1>ToDo List</h1>
+      <TodoForm className="todoForm" />
     </div>
   );
 }
